@@ -30,7 +30,8 @@ if __name__ == "__main__":
             # Calculate the Scrabble score.
             score = 0
             for letter in word:
-                score = score + scrabble.scores[letter]
+                if letter in rack:
+                    score = score + scrabble.scores[letter]
             valid_words.append((score, word))
 
     for play in sorted(valid_words):
