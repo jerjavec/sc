@@ -34,5 +34,5 @@ if __name__ == "__main__":
                     score = score + scrabble.scores[letter]
             valid_words.append((score, word))
 
-    for play in sorted(valid_words):
-        print("%d %s" % (play[0], play[1]))
+    for score, valid_word in sorted(valid_words):
+        print(f"{score} {valid_word}")
