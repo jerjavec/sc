@@ -73,4 +73,5 @@ class ScrabbleWordsApp:
 if __name__ == "__main__":
     root = tk.Tk()
     app = ScrabbleWordsApp(root)
+    app.entry.focus_set()
     root.mainloop()
