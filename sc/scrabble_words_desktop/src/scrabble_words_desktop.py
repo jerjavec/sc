@@ -1,4 +1,4 @@
-import sys
+import re
 import scrabble_desktop
 import tkinter as tk
 from tkinter import messagebox
@@ -8,16 +8,22 @@ class ScrabbleWordsApp:
         self.master = master
         master.title("Scrabble Words Finder")
 
-        self.label = tk.Label(master, text="Enter your rack of letters:")
+        self.label = tk.Label(master, text="Enter your rack of letters ('-' for blank):")
         self.label.pack()
 
         self.entry = tk.Entry(master)
         self.entry.pack()
 
+        self.label2 = tk.Label(master, text="If you have a pattern you want to match, enter it here:")
+        self.label2.pack()
+
+        self.pattern_entry = tk.Entry(master)
+        self.pattern_entry.pack()
+
         self.check_button = tk.Button(master, text="Check Words", command=self.check_words)
         self.check_button.pack()
 
-        self.result_text = tk.Text(master, height=20, width=50)
+        self.result_text = tk.Text(master, height=15, width=35)
         self.result_text.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         
         self.scrollbar_results_text = tk.Scrollbar(master, orient=tk.VERTICAL)
@@ -29,6 +35,8 @@ class ScrabbleWordsApp:
 
     def check_words(self):
         rack = list(self.entry.get().lower())
+        pat = re.compile(self.pattern_entry.get()) if self.pattern_entry.get() else None
+
         if not rack:
             messagebox.showwarning("Input Error", "Please enter a rack of letters.")
             return
@@ -48,8 +56,12 @@ class ScrabbleWordsApp:
                     available_letters.remove('-')
 
             if valid:
-                score = sum(scrabble_desktop.scores[letter] for letter in word if letter in rack)
-                valid_words.append((score, word))
+                if pat and not pat.match(word):
+                    continue
+                else:
+                    # Calculate the Scrabble score.
+                    score = sum(scrabble_desktop.scores[letter] for letter in word if letter in rack)
+                    valid_words.append((score, word))
 
         self.display_results(valid_words)
 
