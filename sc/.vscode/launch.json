@@ -2,10 +2,26 @@
    "version": "0.2.0",
     "configurations": [
         {
-            "name": "scrabble_cheater",
+            "name": "current",
             "type": "debugpy",
             "request": "launch",
             "program": "${file}",
+            "console": "integratedTerminal",
+            "args": ["aseftes"]
+        },
+        {
+            "name": "scrabble_cheater",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "d:/scripts/sc/scrabble_cheater.py",
+            "console": "integratedTerminal",
+            "args": ["aseftes"]
+        },
+        {
+            "name": "scrabble_words_desktop",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "d:/scripts/sc/scrabble_words_desktop/src/scrabble_Cheater_desktop.py",
             "console": "integratedTerminal",
             "args": ["aseftes"]
         }
