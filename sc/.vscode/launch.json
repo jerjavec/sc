@@ -21,7 +21,7 @@
             "name": "scrabble_words_desktop",
             "type": "debugpy",
             "request": "launch",
-            "program": "d:/scripts/sc/scrabble_words_desktop/src/scrabble_Cheater_desktop.py",
+            "program": "d:/scripts/sc/scrabble_words_desktop/src/scrabble_words_desktop.py",
             "console": "integratedTerminal",
             "args": ["aseftes"]
         }
