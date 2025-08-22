@@ -67,8 +67,11 @@ class ScrabbleWordsApp:
 
     def display_results(self, valid_words):
         self.result_text.delete(1.0, tk.END)
-        for score, valid_word in sorted(valid_words):
-            self.result_text.insert(tk.END, f"{score} {valid_word}\n")
+        if valid_words:
+            for score, valid_word in sorted(valid_words):
+                self.result_text.insert(tk.END, f"{score} {valid_word}\n")
+        else:
+            self.result_text.insert(tk.END, "No valid words found.")
 
 if __name__ == "__main__":
     root = tk.Tk()
