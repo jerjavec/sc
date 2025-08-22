@@ -13,12 +13,14 @@ class ScrabbleWordsApp:
 
         self.entry = tk.Entry(master)
         self.entry.pack()
+        self.entry.bind('<Return>', lambda event: self.check_words())  # Bind Enter key
 
         self.label2 = tk.Label(master, text="If you have a pattern you want to match, enter it here:")
         self.label2.pack()
 
         self.pattern_entry = tk.Entry(master)
         self.pattern_entry.pack()
+        self.pattern_entry.bind('<Return>', lambda event: self.check_words())  # Bind Enter key
 
         self.check_button = tk.Button(master, text="Check Words", command=self.check_words)
         self.check_button.pack()
