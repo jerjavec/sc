@@ -34,5 +34,8 @@ if __name__ == "__main__":
                     score = score + scrabble.scores[letter]
             valid_words.append((score, word))
 
-    for score, valid_word in sorted(valid_words):
-        print(f"{score} {valid_word}")
+    if valid_words:
+        for score, valid_word in sorted(valid_words):
+            print(f"{score} {valid_word}")
+    else:
+        print("No valid words found.")
